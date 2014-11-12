@@ -63,3 +63,26 @@ import com.google.common.hash.Hashing;
  }
  }
 
+/**
+public class Client {
+
+    public static void main(String[] args) throws Exception {
+        System.out.println("Starting Cache Client...");
+
+        List<String> servers = List.newArrayList("Server1","Server2","Server3");
+        int bucket = Hashing.consistentHash(Hashing.md5().hashString("someId"), servers.size());
+        CacheServiceInterface cache = new DistributedCacheService(
+                "http://localhost:3000");
+
+
+        cache.put(1, "foo");
+        System.out.println("put(1 => foo)");
+
+        String value = cache.get(1);
+        System.out.println("get(1) => " + value);
+
+        System.out.println("Existing Cache Client...");
+    }
+
+}
+*/
