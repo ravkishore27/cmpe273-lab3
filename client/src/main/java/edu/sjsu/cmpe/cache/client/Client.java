@@ -24,7 +24,7 @@ import com.google.common.hash.Hashing;
 
  add(serverList.get(i), i);
  }
-
+ System.out.println("Starting Cache Client...");
  for (int j = 0; j < 10; j++) {
  int bucket = Hashing.consistentHash(Hashing.md5().hashInt(j),
  ring.size());
@@ -32,6 +32,7 @@ import com.google.common.hash.Hashing;
  System.out.println("routed to Server: " + server);
  CacheServiceInterface cache = new DistributedCacheService(server);
  cache.put(j + 1, String.valueOf(characters[j]));
+ System.out.println("put(" + (j + 1) + " => "+ String.valueOf(characters[j])+")");
  String value = cache.get(j + 1);
  System.out.println("get(" + (j + 1) + ") => " + value);
 
